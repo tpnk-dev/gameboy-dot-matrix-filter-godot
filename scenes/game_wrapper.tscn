@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://shader/gb_dot_matrix.shader" type="Shader" id=1]
+[ext_resource path="res://texture/lcd_back.png" type="Texture" id=2]
+[ext_resource path="res://scenes/game.tscn" type="PackedScene" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/enable_dot_matrix = true
+shader_param/dot_size = 5.0
+shader_param/pallete_color1 = Color( 0.627451, 0.666667, 0.0196078, 1 )
+shader_param/pallete_color2 = Color( 0.113725, 0.415686, 0.419608, 1 )
+shader_param/contrast = 0.75
+shader_param/lcd_back = ExtResource( 2 )
+
+[node name="GameWrapper" type="Node"]
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 0.2
+anchor_bottom = 0.194
+margin_right = 640.0
+margin_bottom = 580.32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Control"]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 800, 720 )
+rect_pivot_offset = Vector2( 76.9108, 71.8413 )
+stretch = true
+stretch_shrink = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameViewport" type="Viewport" parent="Control/ViewportContainer"]
+size = Vector2( 160, 144 )
+size_override_stretch = true
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="TestScene" parent="Control/ViewportContainer/GameViewport" instance=ExtResource( 3 )]
