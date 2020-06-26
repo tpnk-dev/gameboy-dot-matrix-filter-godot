@@ -10,7 +10,7 @@ Make sure theres's a background to your scene with a #f8f8f8 color.
 
 # Settings
 
-![options](options.png)
+![options](options.PNG)
 
 ## game_wrapper
 
