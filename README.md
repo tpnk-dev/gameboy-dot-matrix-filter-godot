@@ -1,5 +1,7 @@
 # gameboy-dot-matrix-filter-godot
+
 A gameboy retro post-processing filter for your games. Enjoy.
+Feel free to make pull requests.
 
 ![DEMO1](gif_pallete1.gif)
 ![DEMO2](gif_pallete2.gif)
@@ -9,17 +11,17 @@ A gameboy retro post-processing filter for your games. Enjoy.
 Just place any node inside the GameViewport in the game_wrapper scene (demo already has an example scene).
 Make sure theres's a background to your scene with a #f8f8f8 color.
 
+If you want to make the dots bigger, change the value of the stretch shrink in the ViewportContainer. This value is also the dot size in the shader parameter.
+
 # Settings
 
 ![options](options.PNG)
 
 ## game_wrapper
 
-This scene has the wrapper with the ViewportContainer that holds the gameboy dot-matrix shader.
-
-The Control and ViewportContainer have the same resolution. 
-
-In the example, to simulate the gameboy screen, the GameViewport is 5 times smaller than the ViewportContainer (160x144, which is the gb resolution). This factor (5) is used as the stretch shrink parameter in the ViewportContainer. 5 is also the size of each dot in the matrix (set in the shader parameter).
+- This scene has the wrapper with the ShaderViewportContainer that holds the gameboy dot-matrix shader.
+- The Control and WrapperViewportContainer have the resolution of the screen + borders.
+- The GameViewportContainer is sized and offset to match the borders.
 
 ## COLORS
 
@@ -35,4 +37,7 @@ You can use all 255 shades of gray available, but to be faithfull to the origina
 ```
 
 ## TO DO
-- Matrix shadows
+
+- Better pixel shadows
+- Better color reproduction
+- LCD latency
