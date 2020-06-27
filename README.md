@@ -2,6 +2,7 @@
 A gameboy retro post-processing filter for your games. Enjoy.
 
 ![DEMO1](gif_pallete1.gif)
+![DEMO2](gif_pallete2.gif)
 
 # How to use
 
