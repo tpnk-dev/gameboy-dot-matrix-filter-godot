@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/game.tscn" type="PackedScene" id=3]
+[ext_resource path="res://texture/lcd_back.png" type="Texture" id=4]
+[ext_resource path="res://shader/dot_matrix.shader" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 5 )
+shader_param/dot_size = 4.0
+shader_param/pallete_color1 = Color( 0.627451, 0.666667, 0.0196078, 1 )
+shader_param/pallete_color2 = Color( 0.113725, 0.415686, 0.419608, 1 )
+shader_param/use_image_for_lcd = true
+shader_param/border_size = 40.0
+shader_param/enable_dot_matrix = true
+shader_param/glare_amount = 0.1
+shader_param/brightness = 0.408
+shader_param/pixel_shadow_amount = 0.439
+shader_param/lcd_dark_square_transparency = 0.038
+shader_param/lcd_back = ExtResource( 4 )
+
+[node name="GameWrapper" type="Node"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 615.868, 39.179 ],
+"_edit_vertical_guides_": [ 40.1088, 1160.5, 680.853 ]
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 6.10352e-05
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WrapperViewportContainer" type="ViewportContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -6.10352e-05
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="Control/WrapperViewportContainer"]
+size = Vector2( 720, 656 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="ShaderViewportContainer" type="ViewportContainer" parent="Control/WrapperViewportContainer/Viewport"]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="Control/WrapperViewportContainer/Viewport/ShaderViewportContainer"]
+size = Vector2( 720, 656 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="GameViewportContainer" type="ViewportContainer" parent="Control/WrapperViewportContainer/Viewport/ShaderViewportContainer/Viewport"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -288.0
+margin_right = 320.0
+margin_bottom = 288.0
+rect_min_size = Vector2( 640, 576 )
+stretch = true
+stretch_shrink = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="Control/WrapperViewportContainer/Viewport/ShaderViewportContainer/Viewport/GameViewportContainer"]
+size = Vector2( 160, 144 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="TestScene" parent="Control/WrapperViewportContainer/Viewport/ShaderViewportContainer/Viewport/GameViewportContainer/Viewport" instance=ExtResource( 3 )]
+margin_right = 1.60001
+margin_bottom = 1.15201

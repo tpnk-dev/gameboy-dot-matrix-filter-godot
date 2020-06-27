@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/bulba.png" type="Texture" id=1]
 [ext_resource path="res://assets/mario.png" type="Texture" id=2]
 [ext_resource path="res://assets/teste.png" type="Texture" id=3]
+[ext_resource path="res://assets/megaman.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -28,14 +29,40 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 29, 34 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 29, 0, 29, 34 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 58, 0, 29, 34 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 87, 0, 29, 34 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
 [node name="Game" type="Control"]
 anchor_right = 0.99
 anchor_bottom = 0.992
-margin_right = -632.0
-margin_bottom = -570.24
+margin_right = -1028.0
+margin_bottom = -935.296
 rect_min_size = Vector2( 160, 144 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_horizontal_guides_": [ 144.0 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 160.0 ]
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -48,11 +75,18 @@ __meta__ = {
 }
 
 [node name="bulba" type="Sprite" parent="."]
-position = Vector2( 123, 72 )
+position = Vector2( 137.63, 97.2929 )
 texture = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( 22, 75 )
 frames = SubResource( 5 )
-frame = 2
+frame = 3
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 26.3416, 103.694 )
+frames = SubResource( 6 )
+frame = 1
 playing = true
