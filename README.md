@@ -3,8 +3,14 @@
 A gameboy retro post-processing filter for your games. Enjoy.
 Feel free to make pull requests.
 
+### 2D
+
 ![DEMO1](gif_pallete1.gif)
 ![DEMO2](gif_pallete2.gif)
+
+### 3D
+
+![DEMO2](gif_3d.gif)
 
 # How to use
 
